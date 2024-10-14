@@ -60,29 +60,26 @@ const ScaleBox = ({ selectedChords }) => {
   }
 
   return (
-    <div className="w-full flex flex-col gap-4 text-center text-gray-400 ">
-      <div className="flex  items-center gap-4">
-        <p className="text-lg font-medium tracking-wide">NOTES:</p>
-
-        <NoteTags notes={scaleNotes} />
+    <div className="w-full gap-3 mt-8 items-center mx-auto text-center text-gray-400">
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-row items-center gap-3">
+          <p className="text-lg font-medium tracking-wide">NOTES:</p>
+          <span className="flex flex-col gap-2 items-center">
+            <NoteTags notes={scaleNotes} />
+          </span>
+        </div>
+        {possibleKeys.length > 0 ? (
+          <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2 mt-2 w-full">
+            {possibleKeys.map((key, index) => (
+              <li key={index} className="flex">
+                <ScaleButton scaleKey={`${key.key} (${key.matchPercentage.toFixed(2)}% match)`} scaleNotes={key.scaleNotes} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <span className="flex flex-col gap-2 items-center mt-2 outline outline-sky-950 py-2 px-4 rounded-full">Unknown 😔</span>
+        )}
       </div>
-      {possibleKeys.length > 0 ? (
-        <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4  w-full">
-          {possibleKeys.map((key, index) => (
-            <li
-              key={index}
-              className="flex"
-            >
-              <ScaleButton
-                scaleKey={`${key.key} (${key.matchPercentage.toFixed(2)}% match)`}
-                scaleNotes={key.scaleNotes}
-              />
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <span className="flex flex-col gap-2 items-center mt-2 outline outline-sky-950 py-2 px-4 rounded-full">Unknown 😔</span>
-      )}
     </div>
   );
 };

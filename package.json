@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.5",
     "@tonaljs/chord": "^6.1.0",
     "@tonaljs/note": "^4.11.0",
     "@tonaljs/tonal": "^4.10.0",
